@@ -1,5 +1,7 @@
 {
   "header": {
-    "menu": "Menu"
+    "menu": "Menu",
+    "login": "Login",
+    "contact": "Contact" 
   }
 }
