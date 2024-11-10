@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import UnderLineButton from '../molecules/underLineButton'
 import { useTranslation } from 'react-i18next'
-import { IconMenu2, IconX } from '@tabler/icons-react'
+import { IconX } from '@tabler/icons-react'
 
 const Header = () => {
   const { t } = useTranslation()
@@ -14,8 +14,9 @@ const Header = () => {
   }
 
   return (
-    <header className='relative h-full overflow-hidden bg-burgerBrown'>
-      <div className='items-center justify-center hidden h-[52px] sm:flex uppercase'>
+    <header className='relative overflow-hidden bg-burgerBrown'>
+      {/* Desktop Navigation */}
+      <nav className='hidden h-[52px] sm:flex items-center justify-center uppercase' aria-label="Main navigation">
         <UnderLineButton classname='uppercase' selected>
           {t('header.menu')}
         </UnderLineButton>
@@ -25,7 +26,9 @@ const Header = () => {
         <UnderLineButton classname='uppercase'>
           {t('header.contact')}
         </UnderLineButton>
-      </div>
+      </nav>
+
+      {/* Mobile Navigation */}
       <div className='flex items-center justify-center h-[64px] sm:hidden font-medium'>
         <UnderLineButton>
           {t('header.menu')}
@@ -34,19 +37,35 @@ const Header = () => {
           className='absolute z-30 p-2 right-4'
           onClick={toggleMenu}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           {isMenuOpen ? (
-            <IconX size={20} color='white' />
+            <IconX size={16} color='white' />
           ) : (
-            <IconMenu2 size={20} color='white' />
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clipPath="url(#clip0_12745_303)">
+                <rect width="16" height="2" rx="1" fill="white" />
+                <rect y="7" width="16" height="2" rx="1" fill="white" />
+                <rect y="14" width="16" height="2" rx="1" fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_12745_303">
+                  <rect width="16" height="16" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+
           )}
         </button>
       </div>
 
       {/* Lateral Menu */}
-      <div
-        className={`z-20 fixed top-0 right-0 h-full w-64 bg-burgerBrown transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } sm:hidden`}
+      <nav
+        id="mobile-menu"
+        role="dialog"
+        aria-label="Mobile menu"
+        className={`z-20 fixed top-0 right-0 h-full w-64 bg-burgerBrown transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} sm:hidden`}
       >
         <div className='flex flex-col items-center justify-center h-full space-y-6'>
           <UnderLineButton classname='uppercase' onClick={toggleMenu}>
@@ -59,7 +78,7 @@ const Header = () => {
             {t('header.contact')}
           </UnderLineButton>
         </div>
-      </div>
+      </nav>
 
       {/* Overlay */}
       {isMenuOpen && (

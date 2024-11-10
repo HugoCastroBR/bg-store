@@ -3,5 +3,11 @@
     "menu": "Menu",
     "login": "Login",
     "contact": "Contact" 
+  },
+  "searchInput": {
+    "placeholder": "Search menu items"
+  },
+  "menuCategories": {
+    "burgers": "Burgers"
   }
 }

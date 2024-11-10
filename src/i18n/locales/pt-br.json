@@ -3,5 +3,8 @@
     "menu": "Menu",
     "login": "Entrar",
     "contact": "Contato" 
+  },
+  "searchInput": {
+    "placeholder": "Pesquisar itens de menu"
   }
 }

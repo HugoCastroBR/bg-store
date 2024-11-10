@@ -1,31 +1,50 @@
-import React from 'react'
-import Typography from '../atoms/typography'
+import React from 'react';
+import Typography from '../atoms/typography';
 
 interface IUnderLineButtonProps {
-  children: React.ReactNode
-  selected?: boolean
-  classname?: string
-  onClick?: () => void
+  children: React.ReactNode;
+  selected?: boolean;
+  classname?: string;
+  onClick?: () => void;
+  ariaLabel?: string;
+  variant?: 'primary' | 'secondary';
 }
 
 const UnderLineButton = (props: IUnderLineButtonProps) => {
+  const { children, selected, classname, onClick, ariaLabel,variant } = props;
+  
 
+  if (variant === 'primary' || variant === undefined) {
+    return (
+      <button
+        onClick={onClick}
+        className={`text-white h-full border-white w-[232px] 
+          ${selected ? 'border-b-[5px]' : 'border-b-0'} 
+          ${classname}`}
+        aria-pressed={selected}
+        aria-label={ariaLabel}
+      >
+        <Typography className="text-center">
+          {children}
+        </Typography>
+      </button>
+    );
+  }
+  
   return (
     <button
-      onClick={props.onClick}
-      className={
-        `text-white h-full  border-white w-[232px]  
-        ${props.selected ? 'border-b-[5px]' : 'border-b-0'}
-        ${props.classname}
-        `
-      }>
-      <Typography
-        className='text-center'
-      >
-        {props.children}
+      onClick={onClick}
+      className={`text-white h-full border-burgerBrown 
+        ${selected ? 'border-b-2' : 'border-b-0'} 
+        ${classname}`}
+      aria-pressed={selected}
+      aria-label={ariaLabel}
+    >
+      <Typography className="text-base font-semibold text-center text-codGray">
+        {children}
       </Typography>
     </button>
-  )
-}
+  );
+};
 
-export default UnderLineButton
+export default UnderLineButton;
