@@ -12,7 +12,9 @@
   },
   "cart":{
     "title": "Cart",
-    "empty": "Your cart is empty"
+    "empty": "Your cart is empty",
+    "subtotal": "Sub Total",
+    "total": "Total"
   },
   "itemDetails": {
     "chooseSize": "Choose your size",

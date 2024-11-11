@@ -10,7 +10,7 @@ interface ICardProps {
 const Card = (props: ICardProps) => {
   return (
     <div
-      className={`bg-white p-4 ${props.className}`}
+      className={`bg-white  ${props.className}`}
       aria-label={props.ariaLabel || 'Card de conteúdo'} role={props.role}
     >
       {props.children}

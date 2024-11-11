@@ -12,7 +12,9 @@
   },
   "cart":{
     "title": "Carrinho",
-    "empty": "Seu carrinho está vazio"
+    "empty": "Seu carrinho está vazio",
+    "subtotal": "Sub Total",
+    "total": "Total"
   },
   "itemDetails": {
     "chooseSize": "Escolha seu tamanho",

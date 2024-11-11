@@ -12,7 +12,7 @@ const MenuItem = () => {
           <Typography className="text-base leading-[18.75px] font-light max-h-[38px] pr-2 flex text-left text-tundoraGray mb-1">
             180g angus beef burger, homemade molasses barbec...
           </Typography>
-          <Typography className="text-medium font-semibold max-h-[19px] flex text-tundoraGray mb-1">
+          <Typography className="text-base font-semibold max-h-[19px] flex text-tundoraGray mb-1">
             R$33,00
           </Typography>
         </div>

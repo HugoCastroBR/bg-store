@@ -7,7 +7,7 @@ interface ITypographyProps {
 const Typography = (props: ITypographyProps) => {
   return (
     <span
-      className='font-roboto'
+      className='font-roboto text-codGray'
       {...props}
     >
       {props.children}
