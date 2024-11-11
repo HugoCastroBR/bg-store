@@ -13,5 +13,9 @@
   "cart":{
     "title": "Cart",
     "empty": "Your cart is empty"
+  },
+  "itemDetails": {
+    "chooseSize": "Choose your size",
+    "oneChoice": "Choose one option"
   }
 }

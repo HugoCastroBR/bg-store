@@ -13,5 +13,9 @@
   "cart":{
     "title": "Carrinho",
     "empty": "Seu carrinho está vazio"
+  },
+  "itemDetails": {
+    "chooseSize": "Escolha seu tamanho",
+    "oneChoice": "Selecione uma opção"
   }
 }

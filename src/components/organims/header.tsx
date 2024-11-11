@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <header className='relative overflow-hidden bg-burgerBrown'>
+    <header className='relative overflow-hidden bg-burgerBrown w-full'>
       {/* Desktop Navigation */}
       <nav className='hidden h-[52px] sm:flex items-center justify-center uppercase' aria-label="Main navigation">
         <UnderLineButton classname='uppercase' selected>

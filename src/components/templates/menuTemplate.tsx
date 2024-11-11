@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Banner from '../atoms/banner'
 import Card from '../atoms/card'
 import SearchInput from '../molecules/searchInput'
@@ -7,9 +7,13 @@ import MenuContainer from '../organims/menuContainer'
 import ItemDetails from '../organims/itemDetails'
 
 const MenuTemplate = () => {
+
+  const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
   return (
     <>
-      <ItemDetails />
+      {
+        isItemDetailsOpen && <ItemDetails />
+      }
       <div aria-label="Banner da página">
         <Banner />
       </div>
