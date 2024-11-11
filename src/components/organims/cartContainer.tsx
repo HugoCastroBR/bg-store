@@ -7,6 +7,7 @@ const CartContainer = () => {
 
   return (
     <aside
+      id="cart-section" aria-label="Carrinho de compras"
       className='flex flex-col items-center justify-center w-full h-full'
     >
       <div

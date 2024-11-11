@@ -4,10 +4,12 @@ import Card from '../atoms/card'
 import SearchInput from '../molecules/searchInput'
 import CartContainer from '../organims/cartContainer'
 import MenuContainer from '../organims/menuContainer'
+import ItemDetails from '../organims/itemDetails'
 
 const MenuTemplate = () => {
   return (
     <>
+      <ItemDetails />
       <div aria-label="Banner da página">
         <Banner />
       </div>
@@ -34,9 +36,7 @@ const MenuTemplate = () => {
             role="region"
             aria-labelledby="cart-section"
           >
-            <section id="cart-section" aria-label="Carrinho de compras">
               <CartContainer />
-            </section>
           </Card>
         </Card>
       </main>
