@@ -5,10 +5,15 @@ import SearchInput from '../molecules/searchInput'
 import CartContainer from '../organims/cartContainer'
 import MenuContainer from '../organims/menuContainer'
 import ItemDetails from '../organims/itemDetails'
+import FullButton from '../atoms/fullButton'
+import Typography from '../atoms/typography'
+import { useTranslation } from 'react-i18next'
 
 const MenuTemplate = () => {
 
   const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
+  const { t } = useTranslation()
+  
   return (
     <>
       {
@@ -17,7 +22,12 @@ const MenuTemplate = () => {
       <div aria-label="Banner da página">
         <Banner />
       </div>
-      
+      <div
+        className='z-40 fixed top-0 left-0 right-0 h-screen md:hidden w-full flex justify-center items-start bg-gray-50'
+      >
+        <CartContainer />
+      </div>
+
       <main className="flex flex-col items-center w-full h-full max-w-[1024px] bg-white sm:bg-transparent">
         <section
           aria-label="Barra de pesquisa"
@@ -40,9 +50,18 @@ const MenuTemplate = () => {
             role="region"
             aria-labelledby="cart-section"
           >
-              <CartContainer />
+            <CartContainer />
           </Card>
+          
+
         </Card>
+        <div className='fixed top-[calc(100vh-72px)] left-0 right-0 h-screen z-50 block md:hidden'>
+          <FullButton className='md:w-[432px] w-[345px] h-12 rounded-[40px] mb-4 bg-burgerBrown '>
+            <Typography className="text-white text-lg font-medium">
+              {t("cart.yourBasket")} &nbsp;•&nbsp; 1 {t("cart.item")}
+            </Typography>
+          </FullButton>
+        </div>
       </main>
     </>
   )

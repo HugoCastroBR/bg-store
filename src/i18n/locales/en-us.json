@@ -8,13 +8,17 @@
     "placeholder": "Search menu items"
   },
   "menuCategories": {
-    "burgers": "Burgers"
+    "burgers": "Burgers",
+    "alergicWarning": "View allergy information"
   },
   "cart":{
     "title": "Cart",
     "empty": "Your cart is empty",
     "subtotal": "Sub Total",
-    "total": "Total"
+    "total": "Total",
+    "yourBasket": "Your Basket",
+    "item": "Item",
+    "items": "Items"
   },
   "itemDetails": {
     "chooseSize": "Choose your size",

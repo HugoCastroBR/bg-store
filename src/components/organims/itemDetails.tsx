@@ -1,6 +1,7 @@
 import React from "react"
 import Typography from "../atoms/typography"
 import ItemDetailsCategoryOption from "../molecules/itemDetailsCategoryOption"
+import FullButton from "../atoms/fullButton"
 
 const ItemDetails = () => {
 
@@ -38,7 +39,7 @@ const ItemDetails = () => {
         {/* Scrollable content */}
         <div className="relative flex-1 overflow-hidden">
 
-          <ItemDetailsCategoryOption/>
+          <ItemDetailsCategoryOption />
 
           {/* Fixed bottom section with blur effect */}
           <div className="absolute bottom-0 left-0 right-0 bg-white/30 backdrop-blur-[8px] h-[122px]">
@@ -60,14 +61,21 @@ const ItemDetails = () => {
                   </Typography>
                 </button>
               </div>
-              <button
+              {/* <button
                 className=" bg-burgerBrown w-[432px] h-12 rounded-[40px] mb-4">
                 <Typography
                   className="text-white text-lg font-medium"
                 >
                   Add to Order &nbsp;•&nbsp; $11.75
                 </Typography>
-              </button>
+              </button> */}
+              <FullButton className="bg-burgerBrown w-[432px] h-12 rounded-[40px] mb-4">
+                <Typography
+                  className="text-white text-lg font-medium"
+                >
+                  Add to Order &nbsp;•&nbsp; $11.75
+                </Typography>
+              </FullButton>
             </div>
 
           </div>
