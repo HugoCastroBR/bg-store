@@ -9,5 +9,9 @@
   },
   "menuCategories": {
     "burgers": "Burgers"
+  },
+  "cart":{
+    "title": "Cart",
+    "empty": "Your cart is empty"
   }
 }

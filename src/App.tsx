@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center w-screen min-h-screen text-xl font-normal bg-galleryWhite App ">
+      <main className="flex flex-col items-center w-screen min-h-screen text-xl font-normal font-roboto bg-galleryWhite App ">
         <MenuTemplate />
       </main>
     </>

@@ -19,7 +19,7 @@ const MenuCategoryContainer = () => {
         onClick={() => setIsOpen(!isOpen)} 
       >
         <Typography
-          className="text-2xl font-semibold text-codGray"
+          className="text-2xl font-medium text-codGray"
         >
           {t('menuCategories.burgers')}
         </Typography>

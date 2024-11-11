@@ -6,5 +6,12 @@
   },
   "searchInput": {
     "placeholder": "Pesquisar itens de menu"
+  },
+  "menuCategories": {
+    "burgers": "Burgers"
+  },
+  "cart":{
+    "title": "Carrinho",
+    "empty": "Seu carrinho está vazio"
   }
 }

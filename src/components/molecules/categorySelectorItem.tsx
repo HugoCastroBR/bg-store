@@ -15,7 +15,7 @@ const CategorySelectorItem = (props: ICategorySelectorItemProps) => {
       <CircleImage />
       <UnderLineButton
         selected={selected}
-        classname='w-24' 
+        classname='w-24 font-semibold' 
         variant='secondary'
       >
         Category

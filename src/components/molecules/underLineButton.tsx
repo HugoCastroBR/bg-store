@@ -24,7 +24,7 @@ const UnderLineButton = (props: IUnderLineButtonProps) => {
         aria-pressed={selected}
         aria-label={ariaLabel}
       >
-        <Typography className="text-center">
+        <Typography className="font-normal text-center ">
           {children}
         </Typography>
       </button>
@@ -40,7 +40,7 @@ const UnderLineButton = (props: IUnderLineButtonProps) => {
       aria-pressed={selected}
       aria-label={ariaLabel}
     >
-      <Typography className="text-base font-semibold text-center text-codGray">
+      <Typography className={`text-base ${selected? 'font-semibold' : 'font-normal '} text-center text-codGray`}>
         {children}
       </Typography>
     </button>
