@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+'use server'
+import React, { useEffect, useState } from 'react'
 import Banner from '../atoms/banner'
 import Card from '../atoms/card'
 import SearchInput from '../molecules/searchInput'
@@ -8,11 +9,22 @@ import ItemDetails from '../organims/itemDetails'
 import FullButton from '../atoms/fullButton'
 import Typography from '../atoms/typography'
 import { useTranslation } from 'react-i18next'
+import getRestaurantDetails from '../../services/api/restaurant'
 
 const MenuTemplate = () => {
 
   const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
   const { t } = useTranslation()
+
+  const loadRestaurantDetails = async () => {
+    const restaurant = await getRestaurantDetails()
+    console.log(restaurant)
+  }
+
+  const data = getRestaurantDetails().then(data => {
+    console.log(data)
+  })
+  console.log(data)
   
   return (
     <>

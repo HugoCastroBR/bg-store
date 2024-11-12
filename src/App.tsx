@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import Header from './components/organims/header';
-import MenuTemplate from './components/templates/menuTemplate';
+import MenuTemplate from './components/pages/menuTemplate';
 
 
 function App() {
