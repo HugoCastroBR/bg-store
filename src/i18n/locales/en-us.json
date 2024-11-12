@@ -1,4 +1,5 @@
 {
+  "proxy": "https://cdn-dev.preoday.com",
   "header": {
     "menu": "Menu",
     "login": "Login",
