@@ -4,9 +4,11 @@ import React, { useState } from 'react'
 import UnderLineButton from '../molecules/underLineButton'
 import { useTranslation } from 'react-i18next'
 import { IconX } from '@tabler/icons-react'
+import useStore from '../../hooks/useStore'
 
 const Header = () => {
   const { t } = useTranslation()
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -14,7 +16,7 @@ const Header = () => {
   }
 
   return (
-    <header className='relative overflow-hidden bg-burgerBrown w-full'>
+    <header className='relative w-full overflow-hidden bg-navBackground'>
       {/* Desktop Navigation */}
       <nav className='hidden h-[52px] sm:flex items-center justify-center uppercase' aria-label="Main navigation">
         <UnderLineButton classname='uppercase' selected>

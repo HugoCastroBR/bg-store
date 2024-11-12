@@ -1,5 +1,5 @@
 'use server'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import Banner from '../atoms/banner'
 import Card from '../atoms/card'
 import SearchInput from '../molecules/searchInput'
@@ -10,32 +10,43 @@ import FullButton from '../atoms/fullButton'
 import Typography from '../atoms/typography'
 import { useTranslation } from 'react-i18next'
 import getRestaurantDetails from '../../services/api/restaurant'
+import useStore from '../../hooks/useStore'
+import { setRestaurant } from '../../store/action'
+import { Restaurant } from '../../types/restaurant'
 
 const MenuTemplate = () => {
 
-  const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
   const { t } = useTranslation()
+  const {states, dispatch} = useStore()
 
-  const loadRestaurantDetails = async () => {
-    const restaurant = await getRestaurantDetails()
-    console.log(restaurant)
-  }
+  const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
 
-  const data = getRestaurantDetails().then(data => {
+  const loadRestaurantDetails = useCallback(async () => {
+    const data = await getRestaurantDetails()
     console.log(data)
-  })
-  console.log(data)
-  
+    dispatch(setRestaurant(data as Restaurant))
+    document.body.style.setProperty('--color-primary', data.webSettings.primaryColour)
+    document.body.style.setProperty('--color-nav-background', data.webSettings.navBackgroundColour)
+  }, []);
+
+  useEffect(() => {
+    loadRestaurantDetails()
+  }, []);
+
+
   return (
     <>
       {
         isItemDetailsOpen && <ItemDetails />
       }
       <div aria-label="Banner da página">
-        <Banner />
+        <Banner 
+          image={states.restaurant?.webSettings?.bannerImage || ''}
+          label={states.restaurant?.name || ''}
+        />
       </div>
       <div
-        className='z-40 fixed top-0 left-0 right-0 h-screen md:hidden w-full flex justify-center items-start bg-gray-50'
+        className='fixed top-0 left-0 right-0 z-40 flex items-start justify-center w-full h-screen md:hidden bg-gray-50'
       >
         <CartContainer />
       </div>
@@ -64,12 +75,12 @@ const MenuTemplate = () => {
           >
             <CartContainer />
           </Card>
-          
+
 
         </Card>
         <div className='fixed top-[calc(100vh-72px)] left-0 right-0 h-screen z-50 block md:hidden'>
           <FullButton className='md:w-[432px] w-[345px] h-12 rounded-[40px] mb-4 bg-burgerBrown '>
-            <Typography className="text-white text-lg font-medium">
+            <Typography className="text-lg font-medium text-white">
               {t("cart.yourBasket")} &nbsp;•&nbsp; 1 {t("cart.item")}
             </Typography>
           </FullButton>

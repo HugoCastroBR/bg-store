@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useStore from '../../hooks/useStore'
 
-const Banner = () => {
+interface IBannerProps {
+  image: string;
+  label: string;
+}
+const Banner = (props: IBannerProps) => {
+
   return (
     <div
       className='w-full min-w-[1440px] bg-banner h-[150px]'
@@ -8,7 +14,7 @@ const Banner = () => {
     > 
       <div className='flex items-center justify-center h-full'>
         <h1 className='text-4xl font-bold text-white' role="heading">
-          Banner
+          
         </h1>
       </div>
     </div>

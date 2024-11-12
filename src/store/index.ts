@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { userBasketSlice } from "./reducers/userBasket";
+import { restaurantSlice } from "./reducers/restaurant";
 
 const store = configureStore({
   reducer:{
-    userBasket:userBasketSlice.reducer,
+    restaurant:restaurantSlice.reducer,
   }
 })
 
 export default store;
 export type RootState = ReturnType<typeof store.getState>
 
-export const userBasketActions = userBasketSlice.actions
+export const restaurantActions = restaurantSlice.actions

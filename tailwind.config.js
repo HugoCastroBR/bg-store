@@ -9,6 +9,8 @@ module.exports = {
         'roboto': ['Roboto', 'sans-serif'],
       },
       colors: {
+        primary: 'var(--color-primary)',
+        navBackground: 'var(--color-nav-background)',
         burgerBrown: '#4F372F',
         regentGray: '#8A94A4',
         galleryWhite: '#EEEEEE',
