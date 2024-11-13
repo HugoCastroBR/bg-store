@@ -22,6 +22,8 @@
   },
   "itemDetails": {
     "chooseSize": "Escolha seu tamanho",
-    "oneChoice": "Selecione uma opção"
+    "oneChoice": "Selecione uma opção",
+    "chose": "Escolha",
+    "add": "Adicionar"
   }
 }

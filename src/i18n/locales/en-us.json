@@ -1,5 +1,4 @@
 {
-  "proxy": "https://cdn-dev.preoday.com",
   "header": {
     "menu": "Menu",
     "login": "Login",
@@ -26,6 +25,8 @@
   },
   "itemDetails": {
     "chooseSize": "Choose your size",
-    "oneChoice": "Choose one option"
+    "oneChoice": "Choose one option",
+    "chose": "Chose",
+    "add": "Add to Order"
   }
 }
