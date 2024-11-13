@@ -6,14 +6,17 @@ import { useState } from 'react'
 import MenuItem from '../atoms/menuItem'
 import { useTranslation } from 'react-i18next'
 import Typography from '../atoms/typography'
+import { Section } from '../../types/restaurant'
+import ItemDetails from '../organims/itemDetails'
 
-const MenuCategoryContainer = () => {
+const MenuCategoryContainer = (props: Section) => {
   const [isOpen, setIsOpen] = useState(true)
   const { t } = useTranslation()
 
 
   return (
-    <div className="flex flex-col w-full h-auto overflow-hidden transition-all duration-200">
+    <section className="flex flex-col w-full h-auto overflow-hidden transition-all duration-200">
+      
       <button
         className="flex items-center justify-between w-full h-[72px] pt-8 pb-3 px-4  "
         onClick={() => setIsOpen(!isOpen)} 
@@ -21,7 +24,7 @@ const MenuCategoryContainer = () => {
         <Typography
           className="text-2xl font-medium text-codGray"
         >
-          {t('menuCategories.burgers')}
+          {props.name}
         </Typography>
         <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -31,11 +34,13 @@ const MenuCategoryContainer = () => {
 
       </button>
       <div className={`w-full flex flex-col transition-all duration-200 ${isOpen ? 'max-h-full opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
+        {
+          props.items.map((item) => (
+            <MenuItem key={item.id} {...item} />
+          ))
+        }
       </div>
-    </div>
+    </section>
   )
 }
 

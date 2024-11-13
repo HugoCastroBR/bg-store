@@ -1,30 +1,30 @@
-'use server'
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import React from 'react'
+import { useCallback, useEffect } from 'react'
 import Banner from '../atoms/banner'
 import Card from '../atoms/card'
 import SearchInput from '../molecules/searchInput'
 import CartContainer from '../organims/cartContainer'
 import MenuContainer from '../organims/menuContainer'
-import ItemDetails from '../organims/itemDetails'
 import FullButton from '../atoms/fullButton'
 import Typography from '../atoms/typography'
 import { useTranslation } from 'react-i18next'
-import getRestaurantDetails from '../../services/api/restaurant'
+import { getRestaurantItems, getRestaurantDetails } from '../../services/api/restaurant'
 import useStore from '../../hooks/useStore'
-import { setRestaurant } from '../../store/action'
-import { Restaurant } from '../../types/restaurant'
+import { setRestaurant, setRestaurantItems } from '../../store/action'
+import { Restaurant, RestaurantItems } from '../../types/restaurant'
 
 const MenuTemplate = () => {
 
   const { t } = useTranslation()
-  const {states, dispatch} = useStore()
+  const { states, dispatch } = useStore()
 
-  const [isItemDetailsOpen, setIsItemDetailsOpen] = useState(false)
 
   const loadRestaurantDetails = useCallback(async () => {
     const data = await getRestaurantDetails()
+    const items = await getRestaurantItems()
     console.log(data)
     dispatch(setRestaurant(data as Restaurant))
+    dispatch(setRestaurantItems(items as RestaurantItems))
     document.body.style.setProperty('--color-primary', data.webSettings.primaryColour)
     document.body.style.setProperty('--color-nav-background', data.webSettings.navBackgroundColour)
   }, []);
@@ -36,11 +36,9 @@ const MenuTemplate = () => {
 
   return (
     <>
-      {
-        isItemDetailsOpen && <ItemDetails />
-      }
-      <div aria-label="Banner da página">
-        <Banner 
+      
+      <div aria-label="Banner da página" className='w-full'>
+        <Banner
           image={states.restaurant?.webSettings?.bannerImage || ''}
           label={states.restaurant?.name || ''}
         />
@@ -48,7 +46,9 @@ const MenuTemplate = () => {
       <div
         className='fixed top-0 left-0 right-0 z-40 flex items-start justify-center w-full h-screen md:hidden bg-gray-50'
       >
-        <CartContainer />
+        <CartContainer 
+          {...states.basket}
+        />
       </div>
 
       <main className="flex flex-col items-center w-full h-full max-w-[1024px] bg-white sm:bg-transparent">
@@ -73,7 +73,9 @@ const MenuTemplate = () => {
             role="region"
             aria-labelledby="cart-section"
           >
-            <CartContainer />
+            <CartContainer 
+              {...states.basket}
+            />
           </Card>
 
 

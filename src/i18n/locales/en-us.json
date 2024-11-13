@@ -5,6 +5,9 @@
     "login": "Login",
     "contact": "Contact" 
   },
+  "banner": {
+    "aria-label": "Banner with main title"
+  },
   "searchInput": {
     "placeholder": "Search menu items"
   },

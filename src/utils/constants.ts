@@ -1,1 +1,1 @@
-export const restaurantApi = "https://cdn-dev.preoday.com/challenge/venue/9"
+export const restaurantApi = "https://cdn-dev.preoday.com/challenge"

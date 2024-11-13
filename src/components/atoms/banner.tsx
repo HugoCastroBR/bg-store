@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import useStore from '../../hooks/useStore'
+import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 interface IBannerProps {
   image: string;
@@ -7,15 +7,19 @@ interface IBannerProps {
 }
 const Banner = (props: IBannerProps) => {
 
+  const {t} = useTranslation()
+
   return (
     <div
-      className='w-full min-w-[1440px] bg-banner h-[150px]'
-      aria-label="Banner com título principal"
+      className='w-full min-w-[1440px] h-[150px]'
+      aria-label={t('banner.aria-label')}
     > 
-      <div className='flex items-center justify-center h-full'>
-        <h1 className='text-4xl font-bold text-white' role="heading">
-          
-        </h1>
+      <div className='flex items-center justify-center w-full h-full' >
+        <img
+          className='object-fill w-full h-full'
+          src={props.image}
+          aria-label={props.label}
+        />
       </div>
     </div>
   )

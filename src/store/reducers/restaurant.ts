@@ -1,6 +1,7 @@
+import { Restaurant } from './../../types/restaurant';
 
 import { createSlice } from "@reduxjs/toolkit";
-import { Restaurant } from "../../types/restaurant";
+
 
 
 
