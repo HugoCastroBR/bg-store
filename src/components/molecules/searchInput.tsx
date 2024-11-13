@@ -1,7 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-const SearchInput = () => {
+interface SearchInputProps {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const SearchInput = ({ onChange }: SearchInputProps) => {
   const { t } = useTranslation()
 
   return (
@@ -17,6 +21,7 @@ const SearchInput = () => {
           className="w-full h-full font-normal focus:outline-none font-roboto placeholder:font-roboto placeholder:font-normal placeholder:text-mineShaftGray"
           placeholder={t('searchInput.placeholder')}
           aria-label={t('searchInput.ariaLabel')}
+          onChange={onChange}
         />
       </div>
     </form>

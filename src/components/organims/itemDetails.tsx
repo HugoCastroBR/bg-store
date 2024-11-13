@@ -1,9 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Typography from "../atoms/typography"
 import ItemDetailsCategoryOption from "../molecules/itemDetailsCategoryOption"
 import FullButton from "../atoms/fullButton"
 import { MenuItem } from "../../types/restaurant"
 import { useTranslation } from "react-i18next"
+import useStore from "../../hooks/useStore"
+import { addItem } from "../../store/action"
 
 interface IItemDetailsProps extends MenuItem {
   onClose?: () => void;
@@ -12,10 +14,22 @@ interface IItemDetailsProps extends MenuItem {
 const ItemDetails = (props:IItemDetailsProps) => {
 
   const { t } = useTranslation()
+  const { dispatch } = useStore()
+  
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     console.log(props.modifiers)
   }, [])
+
+  const handlerAddToCart = (quantity: number) => {
+    dispatch(addItem({
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      quantity
+    }))
+  }
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center overflow-hidden bg-black/65">
@@ -62,14 +76,22 @@ const ItemDetails = (props:IItemDetailsProps) => {
             <div className="flex flex-col items-center h-full justify-evenly">
               <div className="flex items-center justify-between w-[143px] h-8 ">
                 <button
+                  onClick={() => {
+                    if (quantity > 1) {
+                      setQuantity(quantity - 1)
+                    }
+                  }}
                   className="w-8 h-8 rounded-full  bg-[#DADADA] flex items-center justify-center "
                 >
                   <Typography className="text-4xl text-[#5F5F5F] mb-0.5">
                     -
                   </Typography>
                 </button>
-                <span className="text-xl font-semibold">1</span>
+                <span className="text-xl font-semibold">{quantity}</span>
                 <button
+                  onClick={() => {
+                    setQuantity(quantity + 1)
+                  }}
                   className="flex items-center justify-center w-8 h-8 text-xl text-white rounded-full bg-burgerBrown"
                 >
                   <Typography className="text-3xl text-white mb-0.5">
@@ -77,7 +99,7 @@ const ItemDetails = (props:IItemDetailsProps) => {
                   </Typography>
                 </button>
               </div>
-              <FullButton className="bg-primary w-[432px] h-12 rounded-[40px] mb-4">
+              <FullButton className={`${quantity <= 0 ? 'bg-primary' : 'bg-gray-50'} w-[432px] h-12 rounded-[40px] mb-4`}>
                 <Typography
                   className="text-lg font-medium text-white"
                 >

@@ -7,7 +7,6 @@ import MenuItem from '../atoms/menuItem'
 import { useTranslation } from 'react-i18next'
 import Typography from '../atoms/typography'
 import { Section } from '../../types/restaurant'
-import ItemDetails from '../organims/itemDetails'
 
 const MenuCategoryContainer = (props: Section) => {
   const [isOpen, setIsOpen] = useState(true)

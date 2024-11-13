@@ -24,7 +24,7 @@ const UnderLineButton = (props: IUnderLineButtonProps) => {
         aria-pressed={selected}
         aria-label={ariaLabel}
       >
-        <Typography className="font-normal text-center ">
+        <Typography className="font-normal text-center text-white">
           {children}
         </Typography>
       </button>

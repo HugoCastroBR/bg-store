@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCallback, useEffect } from 'react'
 import Banner from '../atoms/banner'
 import Card from '../atoms/card'
@@ -17,12 +17,13 @@ const MenuTemplate = () => {
 
   const { t } = useTranslation()
   const { states, dispatch } = useStore()
+  
+  const [search, setSearch] = useState('')
 
 
   const loadRestaurantDetails = useCallback(async () => {
     const data = await getRestaurantDetails()
     const items = await getRestaurantItems()
-    console.log(data)
     dispatch(setRestaurant(data as Restaurant))
     dispatch(setRestaurantItems(items as RestaurantItems))
     document.body.style.setProperty('--color-primary', data.webSettings.primaryColour)
@@ -36,7 +37,6 @@ const MenuTemplate = () => {
 
   return (
     <>
-      
       <div aria-label="Banner da página" className='w-full'>
         <Banner
           image={states.restaurant?.webSettings?.bannerImage || ''}
@@ -56,7 +56,9 @@ const MenuTemplate = () => {
           aria-label="Barra de pesquisa"
           className="w-full h-auto py-4 sm:py-[6px] px-4 sm:px-0"
         >
-          <SearchInput />
+          <SearchInput 
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </section>
 
         <Card
@@ -65,7 +67,9 @@ const MenuTemplate = () => {
           aria-labelledby="menu-section"
         >
           <section id="menu-section" aria-label="Conteúdo do menu" className="w-full">
-            <MenuContainer />
+            <MenuContainer 
+              search={search}
+            />
           </section>
 
           <Card
@@ -77,8 +81,6 @@ const MenuTemplate = () => {
               {...states.basket}
             />
           </Card>
-
-
         </Card>
         <div className='fixed top-[calc(100vh-72px)] left-0 right-0 h-screen z-50 block md:hidden'>
           <FullButton className='md:w-[432px] w-[345px] h-12 rounded-[40px] mb-4 bg-burgerBrown '>

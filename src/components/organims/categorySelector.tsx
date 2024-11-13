@@ -9,7 +9,7 @@ const CategorySelector = () => {
 
   return (
     <section
-      className='flex items-start justify-start w-full pt-5 pb-6 pl-4 h-max' 
+      className='flex items-start justify-start w-full pt-5 pl-4 h-max' 
     >
       {states.restaurantItems.sections && states.restaurantItems.sections.map((section, index) => (
         <CategorySelectorItem 

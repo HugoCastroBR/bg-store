@@ -11,7 +11,7 @@ export type BasketItem = {
   price: number;
   quantity: number;
   modifiers?: BasketItemModifier[];
-  totalPrice: number; 
+  totalPrice?: number; 
 };
 
 export type Basket = {

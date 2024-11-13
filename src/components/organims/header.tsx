@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import UnderLineButton from '../molecules/underLineButton'
 import { useTranslation } from 'react-i18next'
 import { IconX } from '@tabler/icons-react'
-import useStore from '../../hooks/useStore'
 
 const Header = () => {
   const { t } = useTranslation()
